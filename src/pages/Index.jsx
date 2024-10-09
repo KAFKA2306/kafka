@@ -120,38 +120,32 @@ const SkillCard = ({ title, icon, skills }) => (
 )
 
 const ProjectCard = ({ title, description, link }) => (
-  <Card className="bg-white bg-opacity-10">
+  <Card className="bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300">
     <CardHeader>
-      <CardTitle className="text-2xl">{title}</CardTitle>
+      <CardTitle className="text-2xl">
+        <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-200 transition-colors duration-300">
+          {title}
+        </a>
+      </CardTitle>
     </CardHeader>
     <CardContent>
-      <CardDescription className="text-lg">{description}</CardDescription>
+      <CardDescription className="text-lg text-gray-200">{description}</CardDescription>
     </CardContent>
-    <CardFooter>
-      <Button asChild variant="secondary" className="w-full">
-        <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-          View Project <ExternalLink className="ml-2 h-4 w-4" />
-        </a>
-      </Button>
-    </CardFooter>
   </Card>
 )
 
 const ArticleCard = ({ title, description, link }) => (
-  <Card className="bg-white bg-opacity-10">
+  <Card className="bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300">
     <CardHeader>
-      <CardTitle className="text-2xl">{title}</CardTitle>
+      <CardTitle className="text-2xl">
+        <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-200 transition-colors duration-300">
+          {title}
+        </a>
+      </CardTitle>
     </CardHeader>
     <CardContent>
-      <CardDescription className="text-lg">{description}</CardDescription>
+      <CardDescription className="text-lg text-gray-200">{description}</CardDescription>
     </CardContent>
-    <CardFooter>
-      <Button asChild variant="secondary" className="w-full">
-        <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-          Read Article <ExternalLink className="ml-2 h-4 w-4" />
-        </a>
-      </Button>
-    </CardFooter>
   </Card>
 )
 
