@@ -1,5 +1,5 @@
 import React from 'react'
-import { Github, Twitter, Gamepad2, MessageCircle, FileText } from 'lucide-react'
+import { Github, Twitter, Gamepad2, MessageCircle, FileText, Code, Database, Globe, BookOpen } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
