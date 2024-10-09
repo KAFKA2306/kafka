@@ -1,5 +1,7 @@
 import React from 'react'
-import { Github, Twitter, Gamepad2, MessageCircle, Code, Database, Globe, BookOpen, Star, FileText } from 'lucide-react'
+import { Github, Twitter, Gamepad2, MessageCircle, Code, Database, Globe, BookOpen, Star, FileText, ExternalLink } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 const Index = () => {
   return (
@@ -16,6 +18,13 @@ const Index = () => {
             <span className="mx-2">·</span>
             <span>18 Following</span>
           </div>
+          <div className="mt-6 flex justify-center space-x-4">
+            <SocialLink href="https://github.com/KAFKA2306" icon={<Github />} />
+            <SocialLink href="https://x.com/kafka_vr" icon={<Twitter />} />
+            <SocialLink href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" icon={<Gamepad2 />} />
+            <SocialLink href="https://discordapp.com/users/kafka.kf" icon={<MessageCircle />} />
+            <SocialLink href="https://note.com/kafkavr/" icon={<FileText />} />
+          </div>
         </header>
 
         <section className="mb-12 bg-white bg-opacity-10 p-6 rounded-lg">
@@ -29,107 +38,129 @@ const Index = () => {
           </ul>
         </section>
 
-        <section className="mb-12 bg-white bg-opacity-10 p-6 rounded-lg">
-          <h2 className="text-3xl font-semibold mb-4">Skills & Interests</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <h3 className="text-xl font-semibold mb-2 flex items-center"><Code className="mr-2" /> Programming</h3>
-              <ul className="list-disc list-inside">
-                <li>Python</li>
-                <li>C#</li>
-                <li>Jupyter Notebook</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-2 flex items-center"><Database className="mr-2" /> Technologies</h3>
-              <ul className="list-disc list-inside">
-                <li>Data Analysis</li>
-                <li>Machine Learning</li>
-                <li>Financial Analysis</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-2 flex items-center"><Globe className="mr-2" /> VRChat</h3>
-              <ul className="list-disc list-inside">
-                <li>Event Organizing</li>
-                <li>World Exploration</li>
-                <li>Community Building</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-2 flex items-center"><BookOpen className="mr-2" /> Other Interests</h3>
-              <ul className="list-disc list-inside">
-                <li>Finance</li>
-                <li>Poker Strategy</li>
-                <li>Science Communication</li>
-              </ul>
-            </div>
+        <section className="mb-12">
+          <h2 className="text-3xl font-semibold mb-6">Skills & Interests</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <SkillCard title="Programming" icon={<Code />} skills={["Python", "C#", "Jupyter Notebook"]} />
+            <SkillCard title="Technologies" icon={<Database />} skills={["Data Analysis", "Machine Learning", "Financial Analysis"]} />
+            <SkillCard title="VRChat" icon={<Globe />} skills={["Event Organizing", "World Exploration", "Community Building"]} />
+            <SkillCard title="Other Interests" icon={<BookOpen />} skills={["Finance", "Poker Strategy", "Science Communication"]} />
           </div>
         </section>
 
-        <section className="mb-12 bg-white bg-opacity-10 p-6 rounded-lg">
-          <h2 className="text-3xl font-semibold mb-4">Projects & Repositories</h2>
-          <ul className="space-y-4">
-            <li>
-              <h3 className="text-xl font-semibold">oil (Python)</h3>
-              <p>最新のデータ分析ツール。金融市場の動向を分析し、投資戦略の立案をサポート。</p>
-            </li>
-            <li>
-              <h3 className="text-xl font-semibold">mstr (Python)</h3>
-              <p>機械学習を活用した高度なデータ分析プラットフォーム。ビッグデータから有意義な洞察を導き出します。</p>
-            </li>
-            <li>
-              <h3 className="text-xl font-semibold">Swiss-Tournament-Manager</h3>
-              <p>VRChatのJoinWars用トーナメント管理システム。公平で効率的な大会運営を実現。</p>
-            </li>
-            <li>
-              <h3 className="text-xl font-semibold">VRPhotoJourney (C#)</h3>
-              <p>VR空間での写真撮影と共有を革新的に改善するプロジェクト。思い出を新次元で記録。</p>
-            </li>
-          </ul>
+        <section className="mb-12">
+          <h2 className="text-3xl font-semibold mb-6">Projects & Repositories</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ProjectCard
+              title="oil (Python)"
+              description="最新のデータ分析ツール。金融市場の動向を分析し、投資戦略の立案をサポート。"
+              link="https://github.com/KAFKA2306/oil"
+            />
+            <ProjectCard
+              title="mstr (Python)"
+              description="機械学習を活用した高度なデータ分析プラットフォーム。ビッグデータから有意義な洞察を導き出します。"
+              link="https://github.com/KAFKA2306/mstr"
+            />
+            <ProjectCard
+              title="Swiss-Tournament-Manager"
+              description="VRChatのJoinWars用トーナメント管理システム。公平で効率的な大会運営を実現。"
+              link="https://github.com/KAFKA2306/Swiss-Tournament-Manager"
+            />
+            <ProjectCard
+              title="VRPhotoJourney (C#)"
+              description="VR空間での写真撮影と共有を革新的に改善するプロジェクト。思い出を新次元で記録。"
+              link="https://github.com/KAFKA2306/VRPhotoJourney"
+            />
+          </div>
         </section>
 
-        <section className="mb-12 bg-white bg-opacity-10 p-6 rounded-lg">
-          <h2 className="text-3xl font-semibold mb-4">Recent Articles</h2>
-          <ul className="space-y-4">
-            <li>
-              <h3 className="text-xl font-semibold">🃏 ポーカーマスターへの道：6つのボードテクスチャ完全攻略ガイド</h3>
-              <p>ポーカー戦略の核心に迫る、ボードテクスチャの徹底解説。勝率向上の秘訣を公開。</p>
-            </li>
-            <li>
-              <h3 className="text-xl font-semibold">Tesla Optimusロボットと大規模言語モデル統合による市場インパクト</h3>
-              <p>最新技術の融合が生み出す、未来の高齢者ケアと医療革命の可能性を探る。</p>
-            </li>
-            <li>
-              <h3 className="text-xl font-semibold">#JoinWars 第1回大会 優勝レポート</h3>
-              <p>戦略と実践の融合。VRChat大会での勝利を分析し、成功の鍵を解き明かす。</p>
-            </li>
-          </ul>
+        <section className="mb-12">
+          <h2 className="text-3xl font-semibold mb-6">Recent Articles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ArticleCard
+              title="🃏 ポーカーマスターへの道：6つのボードテクスチャ完全攻略ガイド"
+              description="ポーカー戦略の核心に迫る、ボードテクスチャの徹底解説。勝率向上の秘訣を公開。"
+              link="https://note.com/kafkavr/n/nd47e3ded67d8"
+            />
+            <ArticleCard
+              title="Tesla Optimusロボットと大規模言語モデル統合による市場インパクト"
+              description="最新技術の融合が生み出す、未来の高齢者ケアと医療革命の可能性を探る。"
+              link="https://note.com/kafkavr/n/na22e8f497926"
+            />
+            <ArticleCard
+              title="#JoinWars 第1回大会 優勝レポート"
+              description="戦略と実践の融合。VRChat大会での勝利を分析し、成功の鍵を解き明かす。"
+              link="https://note.com/kafkavr/n/n87f1815317fd"
+            />
+          </div>
         </section>
 
         <footer className="mt-12 text-center">
-          <div className="flex justify-center space-x-6 mb-6">
-            <a href="https://github.com/KAFKA2306" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors duration-300">
-              <Github size={28} />
-            </a>
-            <a href="https://x.com/kafka_vr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors duration-300">
-              <Twitter size={28} />
-            </a>
-            <a href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors duration-300">
-              <Gamepad2 size={28} />
-            </a>
-            <a href="https://discordapp.com/users/kafka.kf" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors duration-300">
-              <MessageCircle size={28} />
-            </a>
-            <a href="https://note.com/kafkavr/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors duration-300">
-              <FileText size={28} />
-            </a>
-          </div>
           <p>&copy; 2024 KAFKA2306. All rights reserved.</p>
         </footer>
       </div>
     </div>
   )
 }
+
+const SocialLink = ({ href, icon }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors duration-300">
+    {React.cloneElement(icon, { size: 28 })}
+  </a>
+)
+
+const SkillCard = ({ title, icon, skills }) => (
+  <Card className="bg-white bg-opacity-10">
+    <CardHeader>
+      <CardTitle className="flex items-center text-xl font-semibold">
+        {React.cloneElement(icon, { className: "mr-2" })}
+        {title}
+      </CardTitle>
+    </CardHeader>
+    <CardContent>
+      <ul className="list-disc list-inside">
+        {skills.map((skill, index) => (
+          <li key={index}>{skill}</li>
+        ))}
+      </ul>
+    </CardContent>
+  </Card>
+)
+
+const ProjectCard = ({ title, description, link }) => (
+  <Card className="bg-white bg-opacity-10">
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <CardDescription>{description}</CardDescription>
+    </CardContent>
+    <CardFooter>
+      <Button asChild variant="secondary">
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          View Project <ExternalLink className="ml-2 h-4 w-4" />
+        </a>
+      </Button>
+    </CardFooter>
+  </Card>
+)
+
+const ArticleCard = ({ title, description, link }) => (
+  <Card className="bg-white bg-opacity-10">
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <CardDescription>{description}</CardDescription>
+    </CardContent>
+    <CardFooter>
+      <Button asChild variant="secondary">
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          Read Article <ExternalLink className="ml-2 h-4 w-4" />
+        </a>
+      </Button>
+    </CardFooter>
+  </Card>
+)
 
 export default Index
