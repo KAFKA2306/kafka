@@ -1,7 +1,7 @@
 import React from 'react'
-import { Github, Twitter, Gamepad2, MessageCircle, Code, Database, Globe, BookOpen, FileText, ExternalLink } from 'lucide-react'
+import { Github, Twitter, Gamepad2, MessageCircle, FileText } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const Index = () => {
   return (
@@ -10,12 +10,12 @@ const Index = () => {
         <header className="text-center mb-12">
           <h1 className="text-6xl font-bold mb-4">KAFKA</h1>
           <p className="text-2xl">VRChat Enthusiast | Developer | Data Analyst</p>
-          <div className="mt-6 flex justify-center space-x-6">
-            <SocialLink href="https://github.com/KAFKA2306" icon={<Github size={32} />} />
-            <SocialLink href="https://x.com/kafka_vr" icon={<Twitter size={32} />} />
-            <SocialLink href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" icon={<Gamepad2 size={32} />} />
-            <SocialLink href="https://discordapp.com/users/kafka.kf" icon={<MessageCircle size={32} />} />
-            <SocialLink href="https://note.com/kafkavr/" icon={<FileText size={32} />} />
+          <div className="mt-6 flex flex-wrap justify-center gap-6">
+            <SocialLink href="https://github.com/KAFKA2306" icon={<Github size={32} />} text="GitHub Projects" />
+            <SocialLink href="https://x.com/kafka_vr" icon={<Twitter size={32} />} text="Twitter Updates" />
+            <SocialLink href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" icon={<Gamepad2 size={32} />} text="VRChat Profile" />
+            <SocialLink href="https://discordapp.com/users/kafka.kf" icon={<MessageCircle size={32} />} text="Discord Chat" />
+            <SocialLink href="https://note.com/kafkavr/" icon={<FileText size={32} />} text="Blog Articles" />
           </div>
         </header>
 
@@ -35,7 +35,12 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <SkillCard title="Programming" icon={<Code size={24} />} skills={["Python", "C#", "Jupyter Notebook"]} />
             <SkillCard title="Technologies" icon={<Database size={24} />} skills={["Data Analysis", "Machine Learning", "Financial Analysis"]} />
-            <SkillCard title="VRChat" icon={<Globe size={24} />} skills={["Event Organizing", "World Exploration", "Community Building"]} />
+            <SkillCard 
+              title="VRChat" 
+              icon={<Globe size={24} />} 
+              skills={["Event Organizing", "World Exploration", "Community Building"]}
+              link="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0"
+            />
             <SkillCard title="Other Interests" icon={<BookOpen size={24} />} skills={["Finance", "Poker Strategy", "Science Communication"]} />
           </div>
         </section>
@@ -95,18 +100,25 @@ const Index = () => {
   )
 }
 
-const SocialLink = ({ href, icon }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors duration-300">
+const SocialLink = ({ href, icon, text }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center hover:text-gray-300 transition-colors duration-300">
     {icon}
+    <span className="mt-2 text-sm">{text}</span>
   </a>
 )
 
-const SkillCard = ({ title, icon, skills }) => (
+const SkillCard = ({ title, icon, skills, link }) => (
   <Card className="bg-white bg-opacity-10">
     <CardHeader>
       <CardTitle className="flex items-center text-2xl font-semibold">
         {React.cloneElement(icon, { className: "mr-2" })}
-        {title}
+        {link ? (
+          <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-200 transition-colors duration-300">
+            {title}
+          </a>
+        ) : (
+          title
+        )}
       </CardTitle>
     </CardHeader>
     <CardContent>
