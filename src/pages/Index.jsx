@@ -1,5 +1,5 @@
 import React from 'react'
-import { Github, Twitter, Gamepad2, MessageCircle, FileText, Code, Database, Globe, BookOpen } from 'lucide-react'
+import { Github, Twitter, Gamepad2, MessageCircle, FileText, Code, Database, Globe, BookOpen, ShoppingBag } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -11,11 +11,12 @@ const Index = () => {
           <h1 className="text-6xl font-bold mb-4">KAFKA</h1>
           <p className="text-2xl">VRChat Enthusiast | Developer | Data Analyst</p>
           <div className="mt-6 flex flex-wrap justify-center gap-6">
-            <SocialLink href="https://github.com/KAFKA2306" icon={<Github size={32} />} text="GitHub Projects" />
-            <SocialLink href="https://x.com/kafka_vr" icon={<Twitter size={32} />} text="Twitter Updates" />
-            <SocialLink href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" icon={<Gamepad2 size={32} />} text="VRChat Profile" />
-            <SocialLink href="https://discordapp.com/users/kafka.kf" icon={<MessageCircle size={32} />} text="Discord Chat" />
-            <SocialLink href="https://note.com/kafkavr/" icon={<FileText size={32} />} text="Blog Articles" />
+            <SocialLink href="https://github.com/KAFKA2306" icon={<Github size={32} />} text="GitHub Projects" description="Check out my latest code" />
+            <SocialLink href="https://x.com/kafka_vr" icon={<Twitter size={32} />} text="Twitter Updates" description="Follow for VRChat events" />
+            <SocialLink href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" icon={<Gamepad2 size={32} />} text="VRChat Profile" description="Join me in virtual worlds" />
+            <SocialLink href="https://discordapp.com/users/kafka.kf" icon={<MessageCircle size={32} />} text="Discord Chat" description="Let's connect and chat" />
+            <SocialLink href="https://note.com/kafkavr/" icon={<FileText size={32} />} text="Blog Articles" description="Read my latest thoughts" />
+            <SocialLink href="https://www.ginjake.net/home?id=1150362422437302272" icon={<ShoppingBag size={32} />} text="Wishlist" description="See what I'm eyeing" />
           </div>
         </header>
 
@@ -92,6 +93,36 @@ const Index = () => {
           </div>
         </section>
 
+        <section className="mb-16">
+          <h2 className="text-4xl font-semibold mb-8">Wishlist Highlights</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <WishlistItem
+              title="10Avatar 髪型『キャンディボブ/Candy Bob』"
+              price="￥800"
+              category="3D衣装・装飾品"
+              desire="すごく欲しい"
+            />
+            <WishlistItem
+              title="【オリジナル3Dモデル】New NecoMaid"
+              price="￥1500"
+              category="3Dキャラクター"
+              desire="すごく欲しい"
+              note="[アバター]ネコメイド"
+            />
+            <WishlistItem
+              title="【4アバター対応】秋彩スプラッシュ！【PB設定済み】"
+              price="￥3600"
+              category="3D衣装・装飾品"
+              desire="すごく欲しい"
+            />
+          </div>
+          <div className="text-center mt-8">
+            <a href="https://www.ginjake.net/home?id=1150362422437302272" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              View Full Wishlist
+            </a>
+          </div>
+        </section>
+
         <footer className="mt-16 text-center">
           <p className="text-lg">&copy; 2024 KAFKA. All rights reserved.</p>
         </footer>
@@ -100,10 +131,11 @@ const Index = () => {
   )
 }
 
-const SocialLink = ({ href, icon, text }) => (
+const SocialLink = ({ href, icon, text, description }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center hover:text-gray-300 transition-colors duration-300">
     {icon}
-    <span className="mt-2 text-sm">{text}</span>
+    <span className="mt-2 text-sm font-bold">{text}</span>
+    <span className="mt-1 text-xs">{description}</span>
   </a>
 )
 
@@ -157,6 +189,20 @@ const ArticleCard = ({ title, description, link }) => (
     </CardHeader>
     <CardContent>
       <CardDescription className="text-lg text-gray-200">{description}</CardDescription>
+    </CardContent>
+  </Card>
+)
+
+const WishlistItem = ({ title, price, category, desire, note }) => (
+  <Card className="bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300">
+    <CardHeader>
+      <CardTitle className="text-xl">{title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p className="text-lg font-bold">{price}</p>
+      <p className="text-sm">{category}</p>
+      <p className="text-sm font-semibold text-green-400">{desire}</p>
+      {note && <p className="text-sm italic mt-2">{note}</p>}
     </CardContent>
   </Card>
 )
