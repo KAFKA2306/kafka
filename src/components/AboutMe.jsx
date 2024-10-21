@@ -4,16 +4,22 @@ const AboutMe = () => {
   return (
     <section className="mb-16 bg-white bg-opacity-10 p-8 rounded-lg">
       <h2 className="text-4xl font-semibold mb-6">About Me</h2>
-      <p className="text-lg mb-4">VRChat活動家、プログラマー、データアナリストとして活動中。自然科学と工学に興味があり、データ分析やファイナンス関連のプロジェクトに取り組んでいます。</p>
-      <p className="text-lg mb-4">主な活動：</p>
-      <ul className="list-disc list-inside text-lg mb-4 space-y-2">
-        <li>VRChatでの定期イベント主催（化学のおはなし会、新ケセド島、謎めぐりなど）</li>
-        <li>VRCみゅうトーク集会、VRCプロンプト集会、VRCかなえちゃん集会の主催</li>
-        <li>ポーカー、ファイナンス、AIに関する記事執筆とプロジェクト開発</li>
-        <li>3Dモデリングとアバターカスタマイズへの強い関心</li>
-        <li>データ分析と機械学習を活用した金融市場分析</li>
-      </ul>
-      <p className="text-lg">常に新しい技術と創造的なプロジェクトに挑戦し、VR空間とリアルワールドの架け橋となることを目指しています。</p>
+      <p className="text-lg mb-4">
+        こんにちは、KAFKAです！VRChatで科学とAIの面白さを広めるのが私の密かな野望です。
+        データ分析と金融の世界も探検中で、毎日新しい発見があってワクワクが止まりません。
+      </p>
+      <p className="text-lg mb-4">
+        実は、ポーカーも得意なんです。たまに勝負強さを発揮して、友達を驚かせるのが密かな楽しみ。
+        でも、本当に夢中になれるのは新しいテクノロジー。VRの世界での冒険は、まるで異世界に迷い込んだみたい！
+      </p>
+      <p className="text-lg mb-4">
+        最近は3Dモデリングにもハマってて、自分だけのアバターを作るのが趣味になりつつあります。
+        リアルとVRを行ったり来たりする生活、時々どっちが現実か分からなくなることも（笑）
+      </p>
+      <p className="text-lg">
+        みなさんも私のVRChatイベントに参加してみませんか？化学のおはなし会や謎めぐり、きっと新しい発見があるはずです！
+        一緒に、デジタルの海を冒険しましょう！
+      </p>
     </section>
   );
 };
