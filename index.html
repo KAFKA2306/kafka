@@ -17,13 +17,11 @@
   <style>
     :root {
       --paper: #F6F7FB;
-      --paper-soft: #FCFCFE;
       --ink: #39445A;
       --muted: #8D97AA;
       --blue: #9CC8EB;
       --lilac: #C9B9E8;
       --pink: #EBC5CF;
-      --line: #DDE4EE;
     }
 
     * { box-sizing: border-box; }
@@ -62,13 +60,13 @@
       position: relative;
       z-index: 1;
       min-height: 100svh;
-      padding: clamp(1.4rem, 4vw, 3rem);
+      padding: clamp(2rem, 5vw, 4rem) 1.25rem;
       display: grid;
       place-items: center;
     }
 
     .profile {
-      width: min(100%, 31rem);
+      width: min(100%, 42rem);
       display: grid;
       justify-items: center;
       text-align: center;
@@ -126,27 +124,6 @@
       color: rgb(57 68 90 / 0.78);
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      margin-bottom: 1.2rem;
-      color: var(--muted);
-      font-size: 0.64rem;
-      font-weight: 600;
-      letter-spacing: 0.21em;
-      text-transform: lowercase;
-    }
-
-    .status::before {
-      content: "";
-      width: 0.4rem;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: var(--blue);
-      box-shadow: 0 0 1rem rgb(156 200 235 / 0.72);
-    }
-
     h1 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -166,7 +143,7 @@
     }
 
     .statement {
-      margin: 2.55rem 0 2.35rem;
+      margin: 2.2rem 0 2.25rem;
       color: rgb(57 68 90 / 0.76);
       font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
       font-size: clamp(1.05rem, 3vw, 1.2rem);
@@ -178,6 +155,7 @@
     .links {
       width: 100%;
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.58rem;
     }
 
@@ -218,12 +196,17 @@
       font-size: 0.78rem;
       font-weight: 650;
       letter-spacing: 0.04em;
+      white-space: nowrap;
     }
 
     .destination {
+      min-width: 0;
+      overflow: hidden;
       color: var(--muted);
-      font-size: 0.66rem;
-      letter-spacing: 0.04em;
+      font-size: 0.64rem;
+      letter-spacing: 0.03em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .signature {
@@ -239,12 +222,12 @@
       background: rgb(156 200 235 / 0.5);
     }
 
-    @media (max-width: 480px) {
-      main { padding: 1.2rem; }
-      .profile { width: min(100%, 23rem); }
+    @media (max-width: 620px) {
+      main { padding-inline: 1.1rem; }
+      .profile { width: min(100%, 24rem); }
+      .links { grid-template-columns: 1fr; }
       .avatar { margin-bottom: 1.65rem; }
-      .statement { margin-block: 2.05rem 1.95rem; }
-      .destination { font-size: 0.61rem; }
+      .statement { margin-block: 2rem 1.95rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -256,30 +239,20 @@
   <main>
     <section class="profile" aria-labelledby="name">
       <div class="avatar" aria-hidden="true"><span class="glyph">K</span></div>
-      <div class="status">somewhere online</div>
       <h1 id="name">KAFKA</h1>
       <p class="handle">@kafka_vr</p>
       <p class="statement">世界のあいだで、つくっている。</p>
 
       <nav class="links" aria-label="Links">
-        <a href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" target="_blank" rel="me noopener noreferrer">
-          <span class="service">VRChat</span><span class="destination">profile</span>
-        </a>
-        <a href="https://github.com/KAFKA2306" target="_blank" rel="me noopener noreferrer">
-          <span class="service">GitHub</span><span class="destination">KAFKA2306</span>
-        </a>
-        <a href="https://x.com/kafka_vr" target="_blank" rel="me noopener noreferrer">
-          <span class="service">X</span><span class="destination">@kafka_vr</span>
-        </a>
-        <a href="https://note.com/kafkavr" target="_blank" rel="me noopener noreferrer">
-          <span class="service">note</span><span class="destination">kafkavr</span>
-        </a>
-        <a href="https://studiokafka.booth.pm/" target="_blank" rel="me noopener noreferrer">
-          <span class="service">BOOTH</span><span class="destination">STUDIO KAFKA</span>
-        </a>
-        <a href="https://www.youtube.com/@byosan-money" target="_blank" rel="me noopener noreferrer">
-          <span class="service">YouTube</span><span class="destination">@byosan-money</span>
-        </a>
+        <a href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" target="_blank" rel="me noopener noreferrer"><span class="service">VRChat</span><span class="destination">profile</span></a>
+        <a href="https://github.com/KAFKA2306" target="_blank" rel="me noopener noreferrer"><span class="service">GitHub</span><span class="destination">KAFKA2306</span></a>
+        <a href="https://x.com/kafka_vr" target="_blank" rel="me noopener noreferrer"><span class="service">X</span><span class="destination">@kafka_vr</span></a>
+        <a href="https://note.com/kafkavr" target="_blank" rel="me noopener noreferrer"><span class="service">note</span><span class="destination">かふか｜KAFKA</span></a>
+        <a href="https://zenn.dev/kafka2306" target="_blank" rel="me noopener noreferrer"><span class="service">Zenn</span><span class="destination">かふか</span></a>
+        <a href="https://scrapbox.io/kafka2512" target="_blank" rel="me noopener noreferrer"><span class="service">Scrapbox</span><span class="destination">kafka2512</span></a>
+        <a href="https://studiokafka.booth.pm/" target="_blank" rel="me noopener noreferrer"><span class="service">BOOTH</span><span class="destination">Studio Kafka</span></a>
+        <a href="https://www.youtube.com/@byosan-money" target="_blank" rel="me noopener noreferrer"><span class="service">YouTube</span><span class="destination">@byosan-money</span></a>
+        <a href="https://kafkafinancialgroup.hatenablog.com/" target="_blank" rel="me noopener noreferrer"><span class="service">Hatena Blog</span><span class="destination">kafkafinancialgroup</span></a>
       </nav>
 
       <div class="signature" aria-hidden="true"></div>
