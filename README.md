@@ -1,16 +1,9 @@
 # KAFKA
 
-自己紹介サイト。
+> まだ名前のない構造を、現実にする。
 
-**Public:** https://kafka2306.github.io/kafka/
+[ENTER](https://kafka2306.github.io/kafka/)
 
-## Design
+`#0B1020` · `#5EDCF5` · `#B9A6FF`
 
-KAFKA SIGNAL SYSTEM の LAB theme を基準にした、依存なしの静的 1 ページです。
-
-- Canvas `#0B1020`
-- Text `#E8EEF8`
-- Interactive `#5EDCF5`
-- Relation `#B9A6FF`
-
-`main` の repository root を GitHub Pages が直接配信します。ビルド工程はありません。
+静的。依存なし。説明しすぎない。
