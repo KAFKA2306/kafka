@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0B1020">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#F6F7FB">
+  <meta name="color-scheme" content="light">
   <title>KAFKA</title>
   <meta name="description" content="KAFKA — 世界のあいだで、つくっている。">
   <meta name="author" content="KAFKA">
@@ -13,16 +13,17 @@
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://kafka2306.github.io/kafka/">
   <link rel="canonical" href="https://kafka2306.github.io/kafka/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230B1020'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%235EDCF5' stroke-width='2'/%3E%3Ccircle cx='42' cy='22' r='4' fill='%23B9A6FF'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23F6F7FB'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%239CC8EB' stroke-width='2'/%3E%3Ccircle cx='42' cy='22' r='4' fill='%23C9B9E8'/%3E%3C/svg%3E">
   <style>
     :root {
-      --canvas: #0B1020;
-      --surface: #12192B;
-      --border: #2A3650;
-      --text: #E8EEF8;
-      --muted: #9AA7BD;
-      --cyan: #5EDCF5;
-      --lavender: #B9A6FF;
+      --paper: #F6F7FB;
+      --paper-soft: #FCFCFE;
+      --ink: #39445A;
+      --muted: #8D97AA;
+      --blue: #9CC8EB;
+      --lilac: #C9B9E8;
+      --pink: #EBC5CF;
+      --line: #DDE4EE;
     }
 
     * { box-sizing: border-box; }
@@ -32,49 +33,42 @@
       margin: 0;
       min-height: 100svh;
       overflow-x: hidden;
-      color: var(--text);
+      color: var(--ink);
       background:
-        radial-gradient(circle at 50% 18%, rgb(185 166 255 / 0.15), transparent 27rem),
-        radial-gradient(circle at 50% 78%, rgb(94 220 245 / 0.09), transparent 32rem),
-        var(--canvas);
+        radial-gradient(circle at 21% 16%, rgb(156 200 235 / 0.30), transparent 24rem),
+        radial-gradient(circle at 78% 22%, rgb(201 185 232 / 0.28), transparent 24rem),
+        radial-gradient(circle at 54% 86%, rgb(235 197 207 / 0.23), transparent 28rem),
+        linear-gradient(155deg, #FCFCFE 0%, #F5F7FB 58%, #F8F5FA 100%);
       font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    body::before,
-    body::after {
+    body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-    }
-
-    body::before {
-      opacity: 0.34;
+      opacity: 0.52;
       background-image:
-        radial-gradient(circle at 18% 22%, rgb(232 238 248 / 0.7) 0 1px, transparent 1.4px),
-        radial-gradient(circle at 77% 27%, rgb(94 220 245 / 0.7) 0 1px, transparent 1.4px),
-        radial-gradient(circle at 68% 72%, rgb(185 166 255 / 0.72) 0 1px, transparent 1.4px),
-        radial-gradient(circle at 29% 77%, rgb(232 238 248 / 0.46) 0 1px, transparent 1.4px);
-      background-size: 19rem 19rem, 23rem 23rem, 29rem 29rem, 31rem 31rem;
-    }
-
-    body::after {
-      background: linear-gradient(180deg, transparent, rgb(11 16 32 / 0.38));
+        radial-gradient(circle at 17% 29%, rgb(57 68 90 / 0.16) 0 0.75px, transparent 1px),
+        radial-gradient(circle at 77% 34%, rgb(156 200 235 / 0.52) 0 0.9px, transparent 1.2px),
+        radial-gradient(circle at 67% 73%, rgb(201 185 232 / 0.55) 0 0.9px, transparent 1.2px),
+        radial-gradient(circle at 31% 77%, rgb(235 197 207 / 0.48) 0 0.9px, transparent 1.2px);
+      background-size: 23rem 23rem, 29rem 29rem, 31rem 31rem, 37rem 37rem;
     }
 
     main {
       position: relative;
       z-index: 1;
       min-height: 100svh;
-      padding: clamp(1.2rem, 4vw, 3rem);
+      padding: clamp(1.4rem, 4vw, 3rem);
       display: grid;
       place-items: center;
     }
 
     .profile {
-      width: min(100%, 29rem);
+      width: min(100%, 31rem);
       display: grid;
       justify-items: center;
       text-align: center;
@@ -89,15 +83,17 @@
       display: grid;
       place-items: center;
       background:
-        radial-gradient(circle at 42% 38%, rgb(232 238 248 / 0.11), transparent 31%),
-        radial-gradient(circle at 65% 72%, rgb(185 166 255 / 0.19), transparent 33%),
-        radial-gradient(circle at 38% 68%, rgb(94 220 245 / 0.17), transparent 38%),
-        rgb(18 25 43 / 0.72);
-      border: 1px solid rgb(232 238 248 / 0.12);
+        radial-gradient(circle at 37% 31%, rgb(255 255 255 / 0.95), transparent 27%),
+        radial-gradient(circle at 66% 70%, rgb(201 185 232 / 0.48), transparent 34%),
+        radial-gradient(circle at 35% 69%, rgb(156 200 235 / 0.42), transparent 40%),
+        radial-gradient(circle at 70% 35%, rgb(235 197 207 / 0.34), transparent 35%),
+        rgb(252 252 254 / 0.74);
+      border: 1px solid rgb(57 68 90 / 0.08);
       box-shadow:
-        0 0 0 1rem rgb(232 238 248 / 0.018),
-        0 0 5rem rgb(94 220 245 / 0.08),
-        0 0 8rem rgb(185 166 255 / 0.08);
+        0 0 0 1rem rgb(255 255 255 / 0.35),
+        0 1.2rem 4rem rgb(129 147 174 / 0.13),
+        0 0 5rem rgb(201 185 232 / 0.15);
+      backdrop-filter: blur(18px);
     }
 
     .avatar::before,
@@ -108,138 +104,151 @@
     }
 
     .avatar::before {
-      inset: 1.05rem;
-      border: 1px solid rgb(94 220 245 / 0.38);
-      box-shadow: inset 0 0 2rem rgb(94 220 245 / 0.08);
+      inset: 1.1rem;
+      border: 1px solid rgb(156 200 235 / 0.7);
+      box-shadow: inset 0 0 1.8rem rgb(201 185 232 / 0.13);
     }
 
     .avatar::after {
-      width: 0.65rem;
+      width: 0.62rem;
       aspect-ratio: 1;
       top: 1.05rem;
-      right: 1.15rem;
-      background: var(--lavender);
-      box-shadow: 0 0 1.5rem rgb(185 166 255 / 0.9);
+      right: 1.18rem;
+      background: var(--lilac);
+      box-shadow: 0 0 1.4rem rgb(201 185 232 / 0.68);
     }
 
     .glyph {
-      font-size: 2.1rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: rgb(232 238 248 / 0.88);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgb(57 68 90 / 0.78);
     }
 
     .status {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      margin-bottom: 1.25rem;
-      color: rgb(232 238 248 / 0.46);
-      font-size: 0.66rem;
+      margin-bottom: 1.2rem;
+      color: var(--muted);
+      font-size: 0.64rem;
       font-weight: 600;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
+      letter-spacing: 0.21em;
+      text-transform: lowercase;
     }
 
     .status::before {
       content: "";
-      width: 0.42rem;
+      width: 0.4rem;
       aspect-ratio: 1;
       border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 1rem rgb(94 220 245 / 0.78);
+      background: var(--blue);
+      box-shadow: 0 0 1rem rgb(156 200 235 / 0.72);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(3.2rem, 12vw, 5.8rem);
-      font-weight: 520;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.4rem, 12vw, 6rem);
+      font-weight: 400;
       line-height: 0.95;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
+      color: #344057;
     }
 
     .handle {
       margin: 0.85rem 0 0;
-      color: rgb(232 238 248 / 0.38);
+      color: var(--muted);
       font-size: 0.76rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
     }
 
     .statement {
-      margin: 2.7rem 0 2.5rem;
-      color: rgb(232 238 248 / 0.76);
+      margin: 2.55rem 0 2.35rem;
+      color: rgb(57 68 90 / 0.76);
       font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
-      font-size: clamp(1.05rem, 3vw, 1.22rem);
+      font-size: clamp(1.05rem, 3vw, 1.2rem);
       font-weight: 400;
       line-height: 1.9;
       letter-spacing: 0.09em;
     }
 
-    nav {
+    .links {
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.65rem;
+      gap: 0.58rem;
     }
 
-    nav a {
-      min-height: 3rem;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgb(232 238 248 / 0.09);
-      border-radius: 999px;
-      color: rgb(232 238 248 / 0.56);
-      background: rgb(18 25 43 / 0.33);
-      backdrop-filter: blur(12px);
+    .links a {
+      min-height: 3.25rem;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid rgb(57 68 90 / 0.08);
+      border-radius: 1.1rem;
+      color: rgb(57 68 90 / 0.78);
+      background: rgb(255 255 255 / 0.49);
+      backdrop-filter: blur(14px);
       text-decoration: none;
-      font-size: 0.62rem;
-      font-weight: 650;
-      letter-spacing: 0.2em;
       transition:
-        color 160ms ease,
-        border-color 160ms ease,
         background 160ms ease,
-        transform 160ms ease;
+        border-color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
     }
 
-    nav a:hover,
-    nav a:focus-visible {
-      color: var(--text);
-      border-color: rgb(94 220 245 / 0.38);
-      background: rgb(94 220 245 / 0.07);
+    .links a:hover,
+    .links a:focus-visible {
+      background: rgb(255 255 255 / 0.78);
+      border-color: rgb(156 200 235 / 0.58);
       transform: translateY(-1px);
+      box-shadow: 0 0.7rem 2.2rem rgb(129 147 174 / 0.10);
     }
 
-    nav a:focus-visible {
-      outline: 2px solid var(--cyan);
-      outline-offset: 4px;
+    .links a:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .service {
+      font-size: 0.78rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+    }
+
+    .destination {
+      color: var(--muted);
+      font-size: 0.66rem;
+      letter-spacing: 0.04em;
     }
 
     .signature {
       margin-top: 2rem;
       width: 3.2rem;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan), var(--lavender), transparent);
-      opacity: 0.65;
+      background: linear-gradient(90deg, transparent, var(--blue), var(--lilac), var(--pink), transparent);
+      opacity: 0.8;
     }
 
     ::selection {
-      color: var(--canvas);
-      background: var(--cyan);
+      color: var(--ink);
+      background: rgb(156 200 235 / 0.5);
     }
 
     @media (max-width: 480px) {
-      main { padding: 1.25rem; }
-      .profile { width: min(100%, 22rem); }
+      main { padding: 1.2rem; }
+      .profile { width: min(100%, 23rem); }
       .avatar { margin-bottom: 1.65rem; }
-      .statement { margin-block: 2.15rem 2rem; }
-      nav { gap: 0.45rem; }
-      nav a { font-size: 0.57rem; letter-spacing: 0.15em; }
+      .statement { margin-block: 2.05rem 1.95rem; }
+      .destination { font-size: 0.61rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      nav a { transition: none; }
+      .links a { transition: none; }
     }
   </style>
 </head>
@@ -252,10 +261,25 @@
       <p class="handle">@kafka_vr</p>
       <p class="statement">世界のあいだで、つくっている。</p>
 
-      <nav aria-label="Profile links">
-        <a href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" target="_blank" rel="me noopener noreferrer">VRCHAT</a>
-        <a href="https://github.com/KAFKA2306" target="_blank" rel="me noopener noreferrer">CODE</a>
-        <a href="https://x.com/kafka_vr" target="_blank" rel="me noopener noreferrer">SIGNAL</a>
+      <nav class="links" aria-label="Links">
+        <a href="https://vrchat.com/home/user/usr_3e36606d-21c3-4be5-b4b5-4bb5f26eefb0" target="_blank" rel="me noopener noreferrer">
+          <span class="service">VRChat</span><span class="destination">profile</span>
+        </a>
+        <a href="https://github.com/KAFKA2306" target="_blank" rel="me noopener noreferrer">
+          <span class="service">GitHub</span><span class="destination">KAFKA2306</span>
+        </a>
+        <a href="https://x.com/kafka_vr" target="_blank" rel="me noopener noreferrer">
+          <span class="service">X</span><span class="destination">@kafka_vr</span>
+        </a>
+        <a href="https://note.com/kafkavr" target="_blank" rel="me noopener noreferrer">
+          <span class="service">note</span><span class="destination">kafkavr</span>
+        </a>
+        <a href="https://studiokafka.booth.pm/" target="_blank" rel="me noopener noreferrer">
+          <span class="service">BOOTH</span><span class="destination">STUDIO KAFKA</span>
+        </a>
+        <a href="https://www.youtube.com/@byosan-money" target="_blank" rel="me noopener noreferrer">
+          <span class="service">YouTube</span><span class="destination">@byosan-money</span>
+        </a>
       </nav>
 
       <div class="signature" aria-hidden="true"></div>
