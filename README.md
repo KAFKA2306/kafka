@@ -1,5 +1,7 @@
 # KAFKA
 
+[![pages-build-deployment](https://github.com/KAFKA2306/kafka/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/KAFKA2306/kafka/actions/workflows/pages/pages-build-deployment)
+
 > 世界のあいだで、つくっている。
 
 [Website](https://kafka2306.github.io/kafka/)
